@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+//"c:\\AndroidStudioProjects\\PPO\\app\\qwe.bat".execute()
+//Runtime.getRuntime().exec("c:\\AndroidStudioProjects\\PPO\\app\\qwe.bat");
+//def proc = "d:\\AndroidStudioProjects\\PPO\\app\\qwe.bat".execute()
+//proc.waitForOrKill(5000)
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.kolmogorov.ppo"
+        minSdkVersion 22
+        targetSdkVersion 28
+        def versionNameMinor = 1
+        def versionNamePath = 1
+        versionCode 1
+        versionName "0." + versionNameMinor + "." + versionNamePath
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        project.ext.set("archivesBaseName", "PPO-" + defaultConfig.versionName)
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            resValue "string", "app_name", "PPO-dev"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "PPO"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
