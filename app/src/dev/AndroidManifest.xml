@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="sensor"
+            tools:node="replace">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
