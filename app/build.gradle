@@ -6,7 +6,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 28
         def versionNameMinor = 1
-        1 = 1
+        def versionNamePath = 3
         versionCode 1
         versionName "0." + versionNameMinor + "." + versionNamePath
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
