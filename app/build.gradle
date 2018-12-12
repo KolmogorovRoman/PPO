@@ -6,7 +6,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 28
         def versionNameMinor = 1
-        def versionNamePath = 4
+        def versionNamePath = 5
         versionCode 1
         versionName "0." + versionNameMinor + "." + versionNamePath
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -15,10 +15,13 @@ android {
     signingConfigs {
         debug {}
         release {
-            storeFile file(project.property("RELEASE_STORE_FILE"))
-            storePassword project.property('RELEASE_STORE_PASS')
-            keyAlias project.property('RELEASE_ALIAS')
-            keyPassword project.property('RELEASE_KEY_PASS')
+            Properties signProp = new Properties()
+            signProp.load(rootProject.file('Keystore/PPO.properties').newDataInputStream())
+
+            storeFile rootProject.file(signProp.get("RELEASE_STORE_FILE"))
+            storePassword signProp.get('RELEASE_STORE_PASS')
+            keyAlias signProp.get('RELEASE_ALIAS')
+            keyPassword signProp.get('RELEASE_KEY_PASS')
         }
     }
     buildTypes{
